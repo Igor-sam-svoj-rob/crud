@@ -1,0 +1,14 @@
+import React from "react";
+
+const Button = ({ onClick }) => {
+  return (
+    <button
+      className="bg-indigo-600 text-white py-2 px-6 my-10 rounded hover:bg-indigo-800"
+      onClick={onClick}
+    >
+      Dodaj korisnika
+    </button>
+  );
+};
+
+export default Button;
