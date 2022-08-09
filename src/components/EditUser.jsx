@@ -3,14 +3,14 @@ import TextInput from "./TextInput";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 
-const AddUser = () => {
+const EditUser = () => {
   const navigate = useNavigate();
   const [values, setValues] = useState({
     ime: "",
     email: "",
   });
 
-  const handleAddUser = () => {
+  const handleEditUser = () => {
     setValues({ ime: "", email: "" });
     navigate("/");
   };
@@ -29,9 +29,9 @@ const AddUser = () => {
         onChange={(e) => setValues({ ...values, email: e.target.value })}
         inputProps={{ type: "text", placeholder: "E-mail" }}
       />
-      <Button onClick={handleAddUser} />
+      <Button onClick={handleEditUser} />
     </div>
   );
 };
 
-export default AddUser;
+export default EditUser;
