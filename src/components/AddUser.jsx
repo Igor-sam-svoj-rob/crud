@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import TextInput from "./TextInput";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "./UserSlice";
+import { v4 as uuidv4 } from "uuid";
 
 const AddUser = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [values, setValues] = useState({
     ime: "",
     email: "",
@@ -13,6 +17,13 @@ const AddUser = () => {
   const handleAddUser = () => {
     setValues({ ime: "", email: "" });
     navigate("/");
+    dispatch(
+      addUser({
+        id: uuidv4(),
+        ime: values.ime,
+        email: values.email,
+      })
+    );
   };
 
   return (
@@ -29,7 +40,7 @@ const AddUser = () => {
         onChange={(e) => setValues({ ...values, email: e.target.value })}
         inputProps={{ type: "text", placeholder: "E-mail" }}
       />
-      <Button onClick={handleAddUser} />
+      <Button onClick={handleAddUser}>Napravi usera</Button>
     </div>
   );
 };
